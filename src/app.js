@@ -4,4 +4,6 @@
  * @author Fredrik Svensson 
  */
 
-import './views/HomeView.js'
+import HomeView from './views/HomeView.js'
+
+const homeView = new HomeView()
