@@ -1,5 +1,3 @@
-EXPERIMENTAL - USE AT OWN RISK
-
 # ZodiacCompanion
 An application to help you find which sign of the zodiac that the sun is in at a given time. 
 
