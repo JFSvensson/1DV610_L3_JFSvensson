@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/JFSvensson/1DV610_L3_JFSvensson/issues"
   },
-  "homepage": "https://github.com/JFSvensson/1DV610_L3_JFSvensson#readme"
+  "homepage": "https://github.com/JFSvensson/1DV610_L3_JFSvensson#readme",
+  "dependencies": {
+    "celestialfinder": "^0.2.6"
+  }
 }
