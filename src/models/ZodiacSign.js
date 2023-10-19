@@ -35,8 +35,10 @@ class ZodiacSign {
   }
 
   getZodiacSign(date) {
+    // Set year of incoming date to 2000 for comparison with start and end dates of zodiac signs.
+    let dateWithEpochYear = new Date(2000, date.getMonth(), date.getDate())
     for (const sign of this.zodiacSigns) {
-      if (date >= sign.startDate && date <= sign.endDate) {
+      if (dateWithEpochYear >= sign.startDate && dateWithEpochYear <= sign.endDate) {
         return sign
       }
     }
