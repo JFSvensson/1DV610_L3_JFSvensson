@@ -1,0 +1,16 @@
+*,
+*::before,
+*::after {
+box-sizing: border-box;
+}
+
+body {
+	margin: auto;
+}
+
+#app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
