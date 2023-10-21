@@ -11,14 +11,10 @@ class ZodiacSignController {
   constructor() {
     this.#zodiacSigns = new ZodiacSigns()
     this.#currentZodiacSign = this.#zodiacSigns.getZodiacSign()
-
-    const dateInput = document.querySelector('date-form')
-    dateInput.addEventListener('date-submitted', (event) => {
-      this.#date = event.detail
-    })
   }
 
-  setZodiacSign() {
+  setZodiacSign(date) {
+    this.#date = new Date(date)
     this.#zodiacSigns.setZodiacSign(this.#date)
   }
 
