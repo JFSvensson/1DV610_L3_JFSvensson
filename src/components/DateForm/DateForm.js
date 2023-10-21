@@ -3,6 +3,8 @@
  *
  */
 
+import RetrievedZodiacSign from '../RetrievedZodiacSign/RetrievedZodiacSign.js'
+
 const template = document.createElement('template')
 template.innerHTML = `
   <div id="date-form">
@@ -22,7 +24,8 @@ class DateForm extends HTMLElement {
     this.shadowRoot.getElementById('submit').addEventListener('click', () => {
       let date = this.shadowRoot.getElementById('date-input').value
       if (this.validateDate(date)) {
-        this.dispatchEvent(new CustomEvent('date-submitted', { detail: date }))
+        let retrievedZodiacSign = document.querySelector('retrieved-zodiac-sign')
+        retrievedZodiacSign.setZodiacSign(date)
       }
     })
   }
