@@ -1,17 +1,30 @@
 /**
  * Handles the requests for a zodiac sign.
  */
-import ZodiacSign from '../models/ZodiacSign.js'
+import ZodiacSigns from '../models/ZodiacSigns.js'
 
 class ZodiacSignController {
-  
-    constructor() {
-      this.zodiacSign = new ZodiacSign()
-    }
-  
-    getZodiacSign(date) {
-      return this.zodiacSign.getZodiacSign(date)
-    }
+  #date
+  #zodiacSigns
+  #currentZodiacSign
+
+  constructor() {
+    this.#zodiacSigns = new ZodiacSigns()
+    this.#currentZodiacSign = this.#zodiacSigns.getZodiacSign()
+
+    const dateInput = document.querySelector('date-form')
+    dateInput.addEventListener('date-submitted', (event) => {
+      this.#date = event.detail
+    })
+  }
+
+  setZodiacSign() {
+    this.#zodiacSigns.setZodiacSign(this.#date)
+  }
+
+  getZodiacSign() {
+    return this.#zodiacSigns.getZodiacSign()
+  }
 }
 
 export default ZodiacSignController
