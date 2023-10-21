@@ -5,9 +5,21 @@
 
 const template = document.createElement('template')
 template.innerHTML = `
+  <style>
+    #home-page {
+      /* background-color: #fff; */
+      color: #000;
+      padding: 10px;
+    }
+
+    h1 {
+      font-size: 4em;
+    }
+  </style>
+
   <div id="home-page">
     <h1>ZodiacCompanion</h1>
-    <p>The page it is</p>
+    <p>This is the page for the app...</p>
   </div>
 `
 
