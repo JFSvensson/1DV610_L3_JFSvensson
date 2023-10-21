@@ -42,7 +42,7 @@ class ZodiacSign {
         return sign
       }
     }
-    return null;
+    return null
   }
 }
 
