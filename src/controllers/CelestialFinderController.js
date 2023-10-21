@@ -2,14 +2,20 @@
  * Handles the requests from user for a certain date
  */
 import CelestialFinder from '../../node_modules/celestialfinder/index.js'
-import ZodiacSign from '../models/ZodiacSign.js'
+import ZodiacSigns from '../models/ZodiacSigns.js'
 
 class CelestialFinderController {
+  #zodiacSigns
+  #zodiacSign
+
   constructor() {
-    this.zodiacSign = new ZodiacSign()
+    this.#zodiacSigns = new ZodiacSigns()
+    let today = new Date()
+    let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate()
+    this.#zodiacSign = this.setZodiacSignWithSun(date)
   }
 
-  getZodiacSignWithSun(date) {
+  setZodiacSignWithSun(date) {
     this.celestialFinder = new CelestialFinder(date, 0)
     let solarPosition = this.celestialFinder.positionOfTheSun()
     let solarPositionRightAscension = 
@@ -17,7 +23,7 @@ class CelestialFinderController {
       + solarPosition.rightAscension.minutes / 60 
       + solarPosition.rightAscension.seconds / 3600
 
-    for (const sign of this.zodiacSign.zodiacSigns) {
+    for (const sign of this.#zodiacSigns.zodiacSigns) {
       let signLowerBoundaryRightAscension = 
         sign.lowerBoundary.rightAscension.hours 
         + sign.lowerBoundary.rightAscension.minutes / 60 
@@ -28,10 +34,13 @@ class CelestialFinderController {
         + sign.upperBoundary.rightAscension.seconds / 3600
       if (solarPositionRightAscension >= signLowerBoundaryRightAscension 
           && solarPositionRightAscension <= signUpperBoundaryRightAscension) {
-        return sign
+        this.#zodiacSign = sign
       }
     }
-    return null
+  }
+
+  getZodiacSignWithSun() {
+    return this.#zodiacSign
   }
 }
 
