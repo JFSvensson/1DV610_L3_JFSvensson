@@ -16,7 +16,8 @@ import Aquarius from './Aquarius.js'
 import Pisces from './Pisces.js'
 
 class ZodiacSign {
-  
+  #zodiacSign
+
   constructor() {
     this.zodiacSigns = [
       new Aries(),
@@ -32,17 +33,22 @@ class ZodiacSign {
       new Aquarius(),
       new Pisces()
     ]
+    let today = new Date()
+    this.#zodiacSign = this.setZodiacSign(today)
   }
 
-  getZodiacSign(date) {
+  setZodiacSign(date) {
     // Set year of incoming date to 2000 for comparison with start and end dates of zodiac signs.
     let dateWithEpochYear = new Date(2000, date.getMonth(), date.getDate())
     for (const sign of this.zodiacSigns) {
       if (dateWithEpochYear >= sign.startDate && dateWithEpochYear <= sign.endDate) {
-        return sign
+        this.#zodiacSign = sign
       }
     }
-    return null
+  }
+
+  getZodiacSign() {
+    return this.#zodiacSign
   }
 }
 
