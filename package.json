@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "A companion for finding which zodiac sign the celestial body is in.",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "test"
   },
