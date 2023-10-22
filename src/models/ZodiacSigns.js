@@ -44,7 +44,6 @@ class ZodiacSign {
     let dateWithEpochYear = new Date(2000, date.getMonth(), date.getDate());
     dateWithEpochYear = dateWithEpochYear.setHours(0, 0, 0, 0);
     dateWithEpochYear = new Date(dateWithEpochYear);
-    console.log(dateWithEpochYear);
   
     for (const sign of this.zodiacSigns) {
       // Special case for Capricorn, being on both sides of new year.
@@ -62,7 +61,6 @@ class ZodiacSign {
     }
   }
   
-
   getZodiacSign() {
     return this.#zodiacSign
   }
