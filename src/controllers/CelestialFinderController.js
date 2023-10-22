@@ -59,6 +59,11 @@ class CelestialFinderController {
       + lunarPosition.rightAscension.minutes / 60 
       + lunarPosition.rightAscension.seconds / 3600
     console.log(lunarPositionRightAscension)
+    if (lunarPositionRightAscension < 0) {
+      lunarPositionRightAscension = lunarPositionRightAscension + 24
+    }
+    console.log(lunarPositionRightAscension)
+    
     for (const sign of this.#zodiacSigns.zodiacSigns) {
       let signLowerBoundaryRightAscension = 
         sign.lowerBoundary.rightAscension.hours 
