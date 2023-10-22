@@ -10,6 +10,7 @@ import Leo from './Leo.js'
 import Virgo from './Virgo.js'
 import Libra from './Libra.js'
 import Scorpio from './Scorpio.js'
+import Ophiuchus from './Ophiuchus.js'
 import Sagittarius from './Sagittarius.js'
 import Capricorn from './Capricorn.js'
 import Aquarius from './Aquarius.js'
@@ -28,6 +29,7 @@ class ZodiacSign {
       new Virgo(),
       new Libra(),
       new Scorpio(),
+      new Ophiuchus(),
       new Sagittarius(),
       new Capricorn(),
       new Aquarius(),
@@ -41,7 +43,7 @@ class ZodiacSign {
     // Set year of incoming date to 2000 for comparison with start and end dates of zodiac signs.
     let dateWithEpochYear = new Date(2000, date.getMonth(), date.getDate())
     dateWithEpochYear = dateWithEpochYear.setHours(0, 0, 0, 0)
-    console.log(dateWithEpochYear)
+    dateWithEpochYear = new Date(dateWithEpochYear)
 
     for (const sign of this.zodiacSigns) {
       if (dateWithEpochYear >= sign.startDate.setHours(0, 0, 0, 0) && dateWithEpochYear <= sign.endDate.setHours(0, 0, 0, 0)) {
