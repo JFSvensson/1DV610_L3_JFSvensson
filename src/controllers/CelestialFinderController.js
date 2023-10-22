@@ -22,7 +22,7 @@ class CelestialFinderController {
       solarPosition.rightAscension.hours 
       + solarPosition.rightAscension.minutes / 60 
       + solarPosition.rightAscension.seconds / 3600
-
+      
     for (const sign of this.#zodiacSigns.zodiacSigns) {
       let signLowerBoundaryRightAscension = 
         sign.lowerBoundary.rightAscension.hours 
@@ -32,9 +32,17 @@ class CelestialFinderController {
         sign.upperBoundary.rightAscension.hours 
         + sign.upperBoundary.rightAscension.minutes / 60 
         + sign.upperBoundary.rightAscension.seconds / 3600
-      if (solarPositionRightAscension >= signLowerBoundaryRightAscension 
-          && solarPositionRightAscension <= signUpperBoundaryRightAscension) {
-        this.#zodiacSign = sign
+
+      // Take in consideration low values for sun position.
+      if (
+        (signLowerBoundaryRightAscension < signUpperBoundaryRightAscension &&
+          solarPositionRightAscension >= signLowerBoundaryRightAscension &&
+          solarPositionRightAscension <= signUpperBoundaryRightAscension) ||
+        (signLowerBoundaryRightAscension > signUpperBoundaryRightAscension &&
+          (solarPositionRightAscension >= signLowerBoundaryRightAscension ||
+            solarPositionRightAscension <= signUpperBoundaryRightAscension))
+      ) {
+        this.#zodiacSign = sign;
       }
     }
   }
