@@ -40,9 +40,13 @@ class ZodiacSign {
   setZodiacSign(date) {
     // Set year of incoming date to 2000 for comparison with start and end dates of zodiac signs.
     let dateWithEpochYear = new Date(2000, date.getMonth(), date.getDate())
+    dateWithEpochYear = dateWithEpochYear.setHours(0, 0, 0, 0)
+    console.log(dateWithEpochYear)
+
     for (const sign of this.zodiacSigns) {
-      if (dateWithEpochYear >= sign.startDate && dateWithEpochYear <= sign.endDate) {
+      if (dateWithEpochYear >= sign.startDate.setHours(0, 0, 0, 0) && dateWithEpochYear <= sign.endDate.setHours(0, 0, 0, 0)) {
         this.#zodiacSign = sign
+        break 
       }
     }
   }
