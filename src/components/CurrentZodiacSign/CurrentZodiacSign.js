@@ -24,7 +24,6 @@ template.innerHTML = `
     #zodiac-sign img {
       height: 200px;
     }
-
   </style>
   
   <div id="current-zodiac-sign">

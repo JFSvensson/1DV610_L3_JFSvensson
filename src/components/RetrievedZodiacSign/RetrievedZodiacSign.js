@@ -7,26 +7,55 @@ import CelestialFinderController from '../../controllers/CelestialFinderControll
 
 const template = document.createElement('template')
 template.innerHTML = `
+  <style>
+    #current-zodiac-sign h2{
+      text-align: center;
+      font-size: 2em;
+      place-items: center;
+    }
+
+    #zodiac-sign {
+      display: inline-grid;
+      place-items: center;
+      padding: 10px;
+    }
+
+    #zodiac-sign img {
+      height: 200px;
+    }
+  </style>
+
   <div id="retrieved-zodiac-sign">
-    <p>The Zodiac Sign for the given date</p>
-    <p>is traditionally</p>
-    <div id="retrieved-zodiac-sign-name"></div>
-    <br>
-    <p>But the sun is actually in</p>
-    <div id="actual-retrieved-zodiac-sign-name"></div>
-    <br>
-    <p>and the moon is in</p>
-    <div id="moon-retrieved-zodiac-sign-name"></div>
-    <br>
+    <h2 id="title-date">The Zodiac Signs for </h2>
+    <div id="zodiac-sign">
+      <p>Astrological</p>
+      <img id="astrological-zodiac-sign-image" src="" alt="">
+      <div id="astrological-zodiac-sign-name"></div>
+    </div>
+    <div id="zodiac-sign">
+      <p>Astronomical</p>
+      <img id="astronomical-zodiac-sign-image" src="" alt="">
+      <div id="astronomical-zodiac-sign-name"></div>
+    </div>
+    <div id="zodiac-sign">
+      <p>The Moon</p>
+      <img id="moon-zodiac-sign-image" src="" alt="">
+      <div id="moon-zodiac-sign-name"></div>
+    </div>
   </div>
 `
 
 class RetrievedZodiacSign extends HTMLElement {
-  #retrievedZodiacSign
-  #retrievedZodiacSignName
-  #actualRetrievedZodiacSignName
-  #moonRetrievedZodiacSignName
-  #date
+  #titleDate
+
+  #astrologicalZodiacSignName
+  #astrologicalZodiacSignImage
+
+  #astronomicalZodiacSignName
+  #astronomicalZodiacSignImage
+
+  #moonZodiacSignName
+  #moonZodiacSignImage
 
   constructor() {
     super()
@@ -36,37 +65,47 @@ class RetrievedZodiacSign extends HTMLElement {
   }
 
   setZodiacSign(date) {
+    let displayDate = new Date(date)
+    this.#titleDate = this.shadowRoot.querySelector('#title-date')
+    this.#titleDate.innerText = 'The Zodiac Signs for ' 
+        + displayDate.toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })
+
     let zodiacSignController = new ZodiacSignController()
     zodiacSignController.setZodiacSign(date)
-    this.#retrievedZodiacSign = this.shadowRoot.querySelector('#retrieved-zodiac-sign')
-    this.#retrievedZodiacSignName = this.shadowRoot.querySelector('#retrieved-zodiac-sign-name')
-    this.#retrievedZodiacSignName.innerText = zodiacSignController.getZodiacSign().name
+    this.#astrologicalZodiacSignName = this.shadowRoot.querySelector('#astrological-zodiac-sign-name')
+    this.#astrologicalZodiacSignName.innerText = zodiacSignController.getZodiacSign().name
+    this.#astrologicalZodiacSignImage = this.shadowRoot.querySelector('#astrological-zodiac-sign-image')
+    this.#astrologicalZodiacSignImage.src = './img/' + zodiacSignController.getZodiacSign().name + '400.png'
   }
 
   getZodiacSign() {
-    return this.#retrievedZodiacSign
+    return this.#astrologicalZodiacSignName
   }
 
   setActualZodiacSign(date) {
     let celestialFinderController = new CelestialFinderController()
     celestialFinderController.setZodiacSignWithSun(date)
-    this.#actualRetrievedZodiacSignName = this.shadowRoot.querySelector('#actual-retrieved-zodiac-sign-name')
-    this.#actualRetrievedZodiacSignName.innerText = celestialFinderController.getZodiacSignWithSun().name
+    this.#astronomicalZodiacSignName = this.shadowRoot.querySelector('#astronomical-zodiac-sign-name')
+    this.#astronomicalZodiacSignName.innerText = celestialFinderController.getZodiacSignWithSun().name
+    this.#astronomicalZodiacSignImage = this.shadowRoot.querySelector('#astronomical-zodiac-sign-image')
+    this.#astronomicalZodiacSignImage.src = './img/' + celestialFinderController.getZodiacSignWithSun().name + '400.png'
   }
 
   getActualZodiacSign() {
-    return this.#actualRetrievedZodiacSignName
+    return this.#astronomicalZodiacSignName
   }
 
   setMoonZodiacSign(date) {
     let celestialFinderController = new CelestialFinderController()
     celestialFinderController.setZodiacSignWithMoon(date)
-    this.#moonRetrievedZodiacSignName = this.shadowRoot.querySelector('#moon-retrieved-zodiac-sign-name')
-    this.#moonRetrievedZodiacSignName.innerText = celestialFinderController.getZodiacSignWithMoon().name
+    this.#moonZodiacSignName = this.shadowRoot.querySelector('#moon-zodiac-sign-name')
+    this.#moonZodiacSignName.innerText = celestialFinderController.getZodiacSignWithMoon().name
+    this.#moonZodiacSignImage = this.shadowRoot.querySelector('#moon-zodiac-sign-image')
+    this.#moonZodiacSignImage.src = './img/' + celestialFinderController.getZodiacSignWithMoon().name + '400.png'
   }
 
   getMoonZodiacSign() {
-    return this.#moonRetrievedZodiacSignName
+    return this.#moonZodiacSignName
   }
 }
 
