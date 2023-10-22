@@ -37,6 +37,11 @@ template.innerHTML = `
       <img id="astronomical-zodiac-sign-image" src="" alt="">
       <div id="astronomical-zodiac-sign-name"></div>
     </div>
+    <div id="zodiac-sign">
+      <p>The Moon</p>
+      <img id="moon-zodiac-sign-image" src="" alt="">
+      <div id="moon-zodiac-sign-name"></div>
+    </div>
   </div>
 `
 
@@ -46,6 +51,9 @@ class CurrentZodiacSign extends HTMLElement {
 
   #astronomicalZodiacSignName
   #astronomicalZodiacSignImage
+
+  #moonZodiacSignName
+  #moonZodiacSignImage
 
   constructor() {
     super()
@@ -69,6 +77,12 @@ class CurrentZodiacSign extends HTMLElement {
     this.#astronomicalZodiacSignName.innerText = celestialFinderController.getZodiacSignWithSun().name
     this.#astronomicalZodiacSignImage = this.shadowRoot.querySelector('#astronomical-zodiac-sign-image')
     this.#astronomicalZodiacSignImage.src = './img/' + celestialFinderController.getZodiacSignWithSun().name + '400.png'
+
+    celestialFinderController.setZodiacSignWithMoon(dateCelestialFinderFormat)
+    this.#moonZodiacSignName = this.shadowRoot.querySelector('#moon-zodiac-sign-name')
+    this.#moonZodiacSignName.innerText = celestialFinderController.getZodiacSignWithMoon().name
+    this.#moonZodiacSignImage = this.shadowRoot.querySelector('#moon-zodiac-sign-image')
+    this.#moonZodiacSignImage.src = './img/' + celestialFinderController.getZodiacSignWithMoon().name + '400.png'
   }
 }
 
