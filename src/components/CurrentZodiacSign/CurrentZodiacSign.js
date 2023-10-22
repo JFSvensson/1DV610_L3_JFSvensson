@@ -26,7 +26,7 @@ template.innerHTML = `
   </style>
   
   <div id="current-zodiac-sign">
-    <h2>The current Zodiac Sign</h2>
+    <h2 id="title-date">The Zodiac Sign for </h2>
     <div id="zodiac-sign">  
       <p>Astrological</p>
       <img id="astrological-zodiac-sign-image" src="" alt="">
@@ -46,6 +46,8 @@ template.innerHTML = `
 `
 
 class CurrentZodiacSign extends HTMLElement {
+  #titleDate
+
   #astrologicalZodiacSignName
   #astrologicalZodiacSignImage
 
@@ -64,6 +66,9 @@ class CurrentZodiacSign extends HTMLElement {
     let zodiacSigns = new ZodiacSigns()
     let today = new Date()
     zodiacSigns.setZodiacSign(today)
+    this.#titleDate = this.shadowRoot.querySelector('#title-date')
+    this.#titleDate.innerText = 'The Zodiac Sign for ' 
+        + today.toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })
 
     this.#astrologicalZodiacSignName = this.shadowRoot.querySelector('#astrological-zodiac-sign-name')
     this.#astrologicalZodiacSignName.innerText = zodiacSigns.getZodiacSign().name
