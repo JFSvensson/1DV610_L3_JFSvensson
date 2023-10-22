@@ -5,12 +5,14 @@ box-sizing: border-box;
 }
 
 body {
-	margin: auto;
+  margin: 0;
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
 }
 
 #app {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  place-items: center;
   min-height: 100vh;
 }

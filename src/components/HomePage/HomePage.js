@@ -7,19 +7,19 @@ const template = document.createElement('template')
 template.innerHTML = `
   <style>
     #home-page {
-      /* background-color: #fff; */
-      color: #000;
-      padding: 10px;
+      display: grid;
+      place-items: center;
     }
 
     h1 {
       font-size: 4em;
+      color: purple;
     }
   </style>
 
   <div id="home-page">
     <h1>ZodiacCompanion</h1>
-    <p>This is the page for the app...</p>
+    <h2>Find the astrological and astronomical zodiac sign - and learn more about it!</h2>
   </div>
 `
 

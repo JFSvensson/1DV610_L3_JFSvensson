@@ -14,11 +14,11 @@ class HomeView {
     const homePage = new HomePage()
     appContainer.appendChild(homePage)
 
-    const dateForm = new DateForm()
-    appContainer.appendChild(dateForm)
-
     const currentZodiacSign = new CurrentZodiacSign()
     appContainer.appendChild(currentZodiacSign)
+
+    const dateForm = new DateForm()
+    appContainer.appendChild(dateForm)
 
     const retrievedZodiacSign = new RetrievedZodiacSign()
     appContainer.appendChild(retrievedZodiacSign)
