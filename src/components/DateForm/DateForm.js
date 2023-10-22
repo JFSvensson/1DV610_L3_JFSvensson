@@ -27,6 +27,7 @@ class DateForm extends HTMLElement {
         let retrievedZodiacSign = document.querySelector('retrieved-zodiac-sign')
         retrievedZodiacSign.setZodiacSign(date)
         retrievedZodiacSign.setActualZodiacSign(date)
+        retrievedZodiacSign.setMoonZodiacSign(date)
       }
     })
   }

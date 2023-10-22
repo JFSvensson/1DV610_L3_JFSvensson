@@ -22,7 +22,7 @@ class CelestialFinderController {
       solarPosition.rightAscension.hours 
       + solarPosition.rightAscension.minutes / 60 
       + solarPosition.rightAscension.seconds / 3600
-      
+
     for (const sign of this.#zodiacSigns.zodiacSigns) {
       let signLowerBoundaryRightAscension = 
         sign.lowerBoundary.rightAscension.hours 
@@ -48,6 +48,42 @@ class CelestialFinderController {
   }
 
   getZodiacSignWithSun() {
+    return this.#zodiacSign
+  }
+
+  setZodiacSignWithMoon(date) {
+    this.celestialFinder = new CelestialFinder(date, 0)
+    let lunarPosition = this.celestialFinder.positionOfTheMoon()
+    let lunarPositionRightAscension = 
+      lunarPosition.rightAscension.hours 
+      + lunarPosition.rightAscension.minutes / 60 
+      + lunarPosition.rightAscension.seconds / 3600
+    console.log(lunarPositionRightAscension)
+    for (const sign of this.#zodiacSigns.zodiacSigns) {
+      let signLowerBoundaryRightAscension = 
+        sign.lowerBoundary.rightAscension.hours 
+        + sign.lowerBoundary.rightAscension.minutes / 60 
+        + sign.lowerBoundary.rightAscension.seconds / 3600
+      let signUpperBoundaryRightAscension = 
+        sign.upperBoundary.rightAscension.hours 
+        + sign.upperBoundary.rightAscension.minutes / 60 
+        + sign.upperBoundary.rightAscension.seconds / 3600
+
+      // Take in consideration low values for moon position.
+      if (
+        (signLowerBoundaryRightAscension < signUpperBoundaryRightAscension &&
+          lunarPositionRightAscension >= signLowerBoundaryRightAscension &&
+          lunarPositionRightAscension <= signUpperBoundaryRightAscension) ||
+        (signLowerBoundaryRightAscension > signUpperBoundaryRightAscension &&
+          (lunarPositionRightAscension >= signLowerBoundaryRightAscension ||
+            lunarPositionRightAscension <= signUpperBoundaryRightAscension))
+      ) {
+        this.#zodiacSign = sign;
+      }
+    }
+  }
+
+  getZodiacSignWithMoon() {
     return this.#zodiacSign
   }
 }

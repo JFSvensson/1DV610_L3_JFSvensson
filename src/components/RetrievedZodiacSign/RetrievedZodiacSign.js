@@ -14,6 +14,10 @@ template.innerHTML = `
     <br>
     <p>But the sun is actually in</p>
     <div id="actual-retrieved-zodiac-sign-name"></div>
+    <br>
+    <p>and the moon is in</p>
+    <div id="moon-retrieved-zodiac-sign-name"></div>
+    <br>
   </div>
 `
 
@@ -21,6 +25,7 @@ class RetrievedZodiacSign extends HTMLElement {
   #retrievedZodiacSign
   #retrievedZodiacSignName
   #actualRetrievedZodiacSignName
+  #moonRetrievedZodiacSignName
   #date
 
   constructor() {
@@ -51,6 +56,17 @@ class RetrievedZodiacSign extends HTMLElement {
 
   getActualZodiacSign() {
     return this.#actualRetrievedZodiacSignName
+  }
+
+  setMoonZodiacSign(date) {
+    let celestialFinderController = new CelestialFinderController()
+    celestialFinderController.setZodiacSignWithMoon(date)
+    this.#moonRetrievedZodiacSignName = this.shadowRoot.querySelector('#moon-retrieved-zodiac-sign-name')
+    this.#moonRetrievedZodiacSignName.innerText = celestialFinderController.getZodiacSignWithMoon().name
+  }
+
+  getMoonZodiacSign() {
+    return this.#moonRetrievedZodiacSignName
   }
 }
 
