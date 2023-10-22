@@ -1,6 +1,8 @@
 class Ophiuchus {
   constructor() {
     this.name = 'Ophiuchus'
+    this.startDate = new Date(null)
+    this.endDate = new Date(null)
     this.lowerBoundary = 
       {
         rightAscension: {
