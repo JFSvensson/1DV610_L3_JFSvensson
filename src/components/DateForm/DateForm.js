@@ -7,10 +7,32 @@ import RetrievedZodiacSign from '../RetrievedZodiacSign/RetrievedZodiacSign.js'
 
 const template = document.createElement('template')
 template.innerHTML = `
+  <style>
+    #date-form {
+      display: inline;
+      place-items: center;
+      padding: 10px;
+    }
+
+    #date-form h2 {
+      text-align: center;
+      font-size: 2em;
+      place-items: center;
+    }
+
+    #form {
+      text-align: center;
+    }
+
+  </style>
+
   <div id="date-form">
-  <label for="date">Enter a date:</label>
-  <input type="text" id="date-input" placeholder="YYYY-MM-DD">
-  <button id="submit">Submit</button>
+    <h2>Find Zodiac Signs for other dates</h2>
+    <div id="form">
+      <label for="date">Enter a date (yyyy-mm-dd):</label>
+      <input type="text" id="date-input" placeholder="yyyy-mm-dd">
+      <button id="submit">Submit</button>
+    </div>
   </div>
 `
 
