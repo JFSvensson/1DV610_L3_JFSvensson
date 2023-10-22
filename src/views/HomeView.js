@@ -20,9 +20,6 @@ class HomeView {
     const dateForm = new DateForm()
     appContainer.appendChild(dateForm)
 
-    const retrievedZodiacSign = new RetrievedZodiacSign()
-    appContainer.appendChild(retrievedZodiacSign)
-
   }
 }
 

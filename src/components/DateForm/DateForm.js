@@ -46,7 +46,15 @@ class DateForm extends HTMLElement {
     this.shadowRoot.getElementById('submit').addEventListener('click', () => {
       let date = this.shadowRoot.getElementById('date-input').value
       if (this.validateDate(date)) {
-        let retrievedZodiacSign = document.querySelector('retrieved-zodiac-sign')
+        const appContainer = document.getElementById('app')
+        let retrievedZodiacSign = appContainer.querySelector('retrieved-zodiac-sign');
+
+        if (!retrievedZodiacSign) {
+          retrievedZodiacSign = new RetrievedZodiacSign();
+          appContainer.appendChild(retrievedZodiacSign);
+        }
+
+        retrievedZodiacSign = document.querySelector('retrieved-zodiac-sign')
         retrievedZodiacSign.setZodiacSign(date)
         retrievedZodiacSign.setActualZodiacSign(date)
         retrievedZodiacSign.setMoonZodiacSign(date)
