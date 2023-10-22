@@ -9,7 +9,9 @@ import ZodiacSigns from '../../models/ZodiacSigns.js'
 const template = document.createElement('template')
 template.innerHTML = `
   <style>
-    #current-zodiac-sign {
+    #current-zodiac-sign h2{
+      text-align: center;
+      font-size: 2em;
       place-items: center;
     }
 
@@ -26,7 +28,7 @@ template.innerHTML = `
   </style>
   
   <div id="current-zodiac-sign">
-    <h2 id="title-date">The Zodiac Sign for </h2>
+    <h2 id="title-date">The Zodiac Signs for </h2>
     <div id="zodiac-sign">  
       <p>Astrological</p>
       <img id="astrological-zodiac-sign-image" src="" alt="">
@@ -67,7 +69,7 @@ class CurrentZodiacSign extends HTMLElement {
     let today = new Date()
     zodiacSigns.setZodiacSign(today)
     this.#titleDate = this.shadowRoot.querySelector('#title-date')
-    this.#titleDate.innerText = 'The Zodiac Sign for ' 
+    this.#titleDate.innerText = 'The Zodiac Signs for ' 
         + today.toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })
 
     this.#astrologicalZodiacSignName = this.shadowRoot.querySelector('#astrological-zodiac-sign-name')
