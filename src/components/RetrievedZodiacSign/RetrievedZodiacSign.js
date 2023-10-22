@@ -36,7 +36,6 @@ class RetrievedZodiacSign extends HTMLElement {
     this.#retrievedZodiacSign = this.shadowRoot.querySelector('#retrieved-zodiac-sign')
     this.#retrievedZodiacSignName = this.shadowRoot.querySelector('#retrieved-zodiac-sign-name')
     this.#retrievedZodiacSignName.innerText = zodiacSignController.getZodiacSign().name
-    console.log(this.#retrievedZodiacSignName.innerText)
   }
 
   getZodiacSign() {
@@ -45,10 +44,9 @@ class RetrievedZodiacSign extends HTMLElement {
 
   setActualZodiacSign(date) {
     let celestialFinderController = new CelestialFinderController()
-
-    this.#actualRetrievedZodiacSignName = this.shadowRoot.querySelector('#actual-zodiac-sign-name')
-    this.#actualRetrievedZodiacSignName.innerText = celestialFinderController.getZodiacSignWithSun(date).name
-    console.log(this.#actualRetrievedZodiacSignName.innerText)
+    celestialFinderController.setZodiacSignWithSun(date)
+    this.#actualRetrievedZodiacSignName = this.shadowRoot.querySelector('#actual-retrieved-zodiac-sign-name')
+    this.#actualRetrievedZodiacSignName.innerText = celestialFinderController.getZodiacSignWithSun().name
   }
 
   getActualZodiacSign() {
