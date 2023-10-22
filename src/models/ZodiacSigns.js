@@ -41,17 +41,27 @@ class ZodiacSign {
 
   setZodiacSign(date) {
     // Set year of incoming date to 2000 for comparison with start and end dates of zodiac signs.
-    let dateWithEpochYear = new Date(2000, date.getMonth(), date.getDate())
-    dateWithEpochYear = dateWithEpochYear.setHours(0, 0, 0, 0)
-    dateWithEpochYear = new Date(dateWithEpochYear)
-
+    let dateWithEpochYear = new Date(2000, date.getMonth(), date.getDate());
+    dateWithEpochYear = dateWithEpochYear.setHours(0, 0, 0, 0);
+    dateWithEpochYear = new Date(dateWithEpochYear);
+    console.log(dateWithEpochYear);
+  
     for (const sign of this.zodiacSigns) {
-      if (dateWithEpochYear >= sign.startDate.setHours(0, 0, 0, 0) && dateWithEpochYear <= sign.endDate.setHours(0, 0, 0, 0)) {
+      // Special case for Capricorn, being on both sides of new year.
+      if ((sign.name === 'Capricorn') && ((dateWithEpochYear.getMonth() === 11 && dateWithEpochYear.getDate() > 21) 
+          || (dateWithEpochYear.getMonth() === 0 && dateWithEpochYear.getDate() < 21))) {
         this.#zodiacSign = sign
-        break 
+        return
+      }
+      
+      if (dateWithEpochYear >= sign.startDate.setHours(0, 0, 0, 0) 
+          && dateWithEpochYear <= sign.endDate.setHours(0, 0, 0, 0)) {
+        this.#zodiacSign = sign
+        return
       }
     }
   }
+  
 
   getZodiacSign() {
     return this.#zodiacSign
