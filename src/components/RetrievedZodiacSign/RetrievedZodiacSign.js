@@ -8,7 +8,7 @@ import CelestialFinderController from '../../controllers/CelestialFinderControll
 const template = document.createElement('template')
 template.innerHTML = `
   <style>
-    #current-zodiac-sign h2{
+    #retrieved-zodiac-sign h2 {
       text-align: center;
       font-size: 2em;
       place-items: center;

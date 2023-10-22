@@ -9,7 +9,7 @@ import ZodiacSigns from '../../models/ZodiacSigns.js'
 const template = document.createElement('template')
 template.innerHTML = `
   <style>
-    #current-zodiac-sign h2{
+    #current-zodiac-sign h2 {
       text-align: center;
       font-size: 2em;
       place-items: center;
