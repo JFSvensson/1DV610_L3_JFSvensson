@@ -1,5 +1,5 @@
 # ZodiacCompanion
-An application to help you find which sign of the zodiac that the sun is in at a given time. 
+An application to help you find which sign of the zodiac that the celestial bodies of the solar system is in at a given time. 
 
 ## Current Version (0.1)
 The current version supports:
