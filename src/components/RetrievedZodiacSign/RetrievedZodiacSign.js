@@ -82,7 +82,7 @@ class RetrievedZodiacSign extends HTMLElement {
     return this.#astrologicalZodiacSignName
   }
 
-  setActualZodiacSign(date) {
+  setAstronomicalZodiacSign(date) {
     const celestialFinderController = new CelestialFinderController()
     celestialFinderController.setZodiacSignWithSun(date)
     this.#astronomicalZodiacSignName = this.shadowRoot.querySelector('#astronomical-zodiac-sign-name')
@@ -91,7 +91,7 @@ class RetrievedZodiacSign extends HTMLElement {
     this.#astronomicalZodiacSignImage.src = './img/' + celestialFinderController.getZodiacSignWithSun().name + '400.png'
   }
 
-  getActualZodiacSign() {
+  getAstronomicalZodiacSign() {
     return this.#astronomicalZodiacSignName
   }
 

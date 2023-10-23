@@ -64,7 +64,7 @@ class DateForm extends HTMLElement {
 
         retrievedZodiacSign = document.querySelector('retrieved-zodiac-sign')
         retrievedZodiacSign.setZodiacSign(date)
-        retrievedZodiacSign.setActualZodiacSign(date)
+        retrievedZodiacSign.setAstronomicalZodiacSign(date)
         retrievedZodiacSign.setMoonZodiacSign(date)
       } else {
         //TODO Exception handling
