@@ -12,17 +12,16 @@ The current version supports:
 ### Installation
 ZodiacCompanion can be installed by the following steps:
 
-Use VSCode.
-
-Fork the repository at [https://github.com/JFSvensson/1DV610_L3_JFSvensson](https://github.com/JFSvensson/1DV610_L3_JFSvensson). 
-
-
-Run ``npm install``.
-
-Open using the VSCode built in server.
+Using VSCode.
+1. Clone Git Repository from [https://github.com/JFSvensson/1DV610_L3_JFSvensson](https://github.com/JFSvensson/1DV610_L3_JFSvensson). 
+2. Run ``npm install``.
+3. Open using the VSCode built in server. **Recommended browser: Chrome**
+4. Click on the folder "public"
 
 ## Known Issues
 The positions of the sun and moon depends on [CelestialFinder](https://www.npmjs.com/package/celestialfinder). Unfortunately this package seems to have some errors.
+
+Firefox seems to have problems with "import assertions" in module [CelestialFinder](https://www.npmjs.com/package/celestialfinder).
 
 ## Future Features
 Hopefully future releases will support:
