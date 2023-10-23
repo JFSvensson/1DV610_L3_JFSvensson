@@ -5,7 +5,6 @@
 import HomePage from '../components/HomePage/HomePage.js'
 import DateForm from '../components/DateForm/DateForm.js'
 import CurrentZodiacSign from '../components/CurrentZodiacSign/CurrentZodiacSign.js'
-import RetrievedZodiacSign from '../components/RetrievedZodiacSign/RetrievedZodiacSign.js'
 
 class HomeView {
   constructor() {
