@@ -44,7 +44,7 @@ Om jag tolkar boken rätt är mina klasser för stjärntecknen en form av datast
 ![Alt text](img_reflection/6_Objects.png)
 
 ### 7. Error Handling
-Det finns mycket att säga om felhantering, eller frånvaron av den (som i exemplet nedan). 
+Det finns mycket att säga om felhantering, eller frånvaron av den (som i exemplet nedan). UPPDATERAD: Valde att prioritera just den biten på slutet och införde en try-catch.
 
 ![Alt text](img_reflection/7_ErrorHandling.png)
 
