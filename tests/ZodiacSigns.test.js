@@ -16,7 +16,7 @@ describe('ZodiacSigns', () => {
 
     zodiac.setZodiacSign(geminiDate);
     expect(zodiac.getZodiacSign().name).toBe('Gemini')
-  });
+  })
 
   it('should handle special case for Capricorn', () => {
     const capricornBeforeNewYear = new Date('2000-01-10')
