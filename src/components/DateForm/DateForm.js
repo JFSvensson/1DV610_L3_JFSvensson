@@ -21,6 +21,12 @@ template.innerHTML = `
       place-items: center;
     }
 
+    #date-form p {
+      text-align: center;
+      font-size: 1em;
+      place-items: center;
+    }
+
     #form {
       text-align: center;
     }
@@ -34,6 +40,7 @@ template.innerHTML = `
       <input type="text" id="date-input" placeholder="yyyy-mm-dd">
       <button id="submit">Submit</button>
     </div>
+    <p>(The year can be from 1 to 9999)</p>
   </div>
 `
 
