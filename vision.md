@@ -1,9 +1,11 @@
 # ZodiacCompanion
 ## Vision
 
-Presenting the user with the past, present and future signs of the Zodiac. 
+ZodiacCompanion aspires to illuminate the realm of the Zodiac for those who find astrology intriguing, entertaining, or even just a delightful diversion. Our mission is to provide users with a portal into the enigmatic world of the Zodiac, bridging the past, present, and future constellations.
 
-ZodiacCompanion is a tool for showing which star sign the sun is in according to a given date, both from the astrological point of view and the actual, astronomical sense. It also shows the more rapidly changing position of the moon.
+ZodiacCompanion is a tool designed to unveil the celestial dance of the cosmos. It answers the questions of which star sign the sun occupies on a given date, from both the astrological perspective - steeped in centuries of tradition, and the astronomical standpoint - grounded in precise celestial measurements. Additionally, we reveal the dynamic and ever-shifting position of the moon, keeping you in tune with the rhythms of the night sky.
+
+Whether you're a seasoned stargazer, a casual horoscope reader, or simply someone who finds the mysteries of the Zodiac captivating, ZodiacCompanion welcomes you to explore the ever-turning wheel of the Zodiac with curiosity, wonder, and a touch of magic.
 
 ## Requirements
 The app must accurately determine the current zodiac sign based on the current date and time using the module [CelestialFinder](https://www.npmjs.com/package/celestialfinder) to get the position of the sun [#1](https://github.com/JFSvensson/1DV610_L3_JFSvensson/issues/1).
