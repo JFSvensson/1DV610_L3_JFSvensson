@@ -65,12 +65,12 @@ class RetrievedZodiacSign extends HTMLElement {
   }
 
   setZodiacSign(date) {
-    let displayDate = new Date(date)
+    const displayDate = new Date(date)
     this.#titleDate = this.shadowRoot.querySelector('#title-date')
     this.#titleDate.innerText = 'The Zodiac Signs for ' 
         + displayDate.toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })
 
-    let zodiacSignController = new ZodiacSignController()
+    const zodiacSignController = new ZodiacSignController()
     zodiacSignController.setZodiacSign(date)
     this.#astrologicalZodiacSignName = this.shadowRoot.querySelector('#astrological-zodiac-sign-name')
     this.#astrologicalZodiacSignName.innerText = zodiacSignController.getZodiacSign().name
@@ -83,7 +83,7 @@ class RetrievedZodiacSign extends HTMLElement {
   }
 
   setActualZodiacSign(date) {
-    let celestialFinderController = new CelestialFinderController()
+    const celestialFinderController = new CelestialFinderController()
     celestialFinderController.setZodiacSignWithSun(date)
     this.#astronomicalZodiacSignName = this.shadowRoot.querySelector('#astronomical-zodiac-sign-name')
     this.#astronomicalZodiacSignName.innerText = celestialFinderController.getZodiacSignWithSun().name
@@ -96,7 +96,7 @@ class RetrievedZodiacSign extends HTMLElement {
   }
 
   setMoonZodiacSign(date) {
-    let celestialFinderController = new CelestialFinderController()
+    const celestialFinderController = new CelestialFinderController()
     celestialFinderController.setZodiacSignWithMoon(date)
     this.#moonZodiacSignName = this.shadowRoot.querySelector('#moon-zodiac-sign-name')
     this.#moonZodiacSignName.innerText = celestialFinderController.getZodiacSignWithMoon().name
