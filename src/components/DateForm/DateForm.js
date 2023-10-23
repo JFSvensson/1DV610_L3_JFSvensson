@@ -4,6 +4,7 @@
  */
 
 import RetrievedZodiacSign from '../RetrievedZodiacSign/RetrievedZodiacSign.js'
+import DateValidator from './DateValidator.js'
 
 const template = document.createElement('template')
 template.innerHTML = `
@@ -58,13 +59,16 @@ class DateForm extends HTMLElement {
         retrievedZodiacSign.setZodiacSign(date)
         retrievedZodiacSign.setActualZodiacSign(date)
         retrievedZodiacSign.setMoonZodiacSign(date)
+      } else {
+        //TODO Exception handling
+        alert('Invalid date format!')
       }
     })
   }
 
   validateDate(date) {
-    let dateRegex = /^\d{4}-\d{2}-\d{2}$/
-    return dateRegex.test(date)
+    let dateValidator = new DateValidator(date)
+    return dateValidator.isValidDate()
   }
 
 }
