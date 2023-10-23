@@ -31,6 +31,13 @@ template.innerHTML = `
       text-align: center;
     }
 
+    #error-message {
+      color: red;
+      text-align: center;
+      font-size: 1em;
+      place-items: center;
+    }
+
   </style>
 
   <div id="date-form">
@@ -40,6 +47,7 @@ template.innerHTML = `
       <input type="text" id="date-input" placeholder="yyyy-mm-dd">
       <button id="submit">Submit</button>
     </div>
+    <div id="error-message"></div>
     <p>(The year can be from 1 to 9999)</p>
   </div>
 `
@@ -53,23 +61,32 @@ class DateForm extends HTMLElement {
 
     this.shadowRoot.getElementById('submit').addEventListener('click', () => {
       let date = this.shadowRoot.getElementById('date-input').value
-      if (this.validateDate(date)) {
-        const appContainer = document.getElementById('app')
-        let retrievedZodiacSign = appContainer.querySelector('retrieved-zodiac-sign');
+      const errorElement = this.shadowRoot.getElementById('error-message');
 
-        if (!retrievedZodiacSign) {
-          retrievedZodiacSign = new RetrievedZodiacSign();
-          appContainer.appendChild(retrievedZodiacSign);
+      try {
+        if (this.validateDate(date)) {
+          const appContainer = document.getElementById('app')
+          let retrievedZodiacSign = appContainer.querySelector('retrieved-zodiac-sign');
+  
+          if (!retrievedZodiacSign) {
+            retrievedZodiacSign = new RetrievedZodiacSign();
+            appContainer.appendChild(retrievedZodiacSign);
+          }
+  
+          retrievedZodiacSign = document.querySelector('retrieved-zodiac-sign')
+          retrievedZodiacSign.setZodiacSign(date)
+          retrievedZodiacSign.setAstronomicalZodiacSign(date)
+          retrievedZodiacSign.setMoonZodiacSign(date)
+
+          errorElement.innerText = '';
+        } else {
+          throw new Error('Invalid date format!');
         }
-
-        retrievedZodiacSign = document.querySelector('retrieved-zodiac-sign')
-        retrievedZodiacSign.setZodiacSign(date)
-        retrievedZodiacSign.setAstronomicalZodiacSign(date)
-        retrievedZodiacSign.setMoonZodiacSign(date)
-      } else {
-        //TODO Exception handling
-        alert('Invalid date format!')
+      } catch (error) {
+        const errorElement = this.shadowRoot.getElementById('error-message');
+        errorElement.innerText = error.message;
       }
+      
     })
   }
 
